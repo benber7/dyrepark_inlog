@@ -21,7 +21,7 @@ app.set("views", path.join(__dirname, "./views/pages"))
 hbs.registerPartials(path.join(__dirname, "./views/partials"))
 
 
-// Dyr kode start
+// Dyrepark
 app.post("/settinn", (req, res) => {
     //console.log(req.body)
     let svar = req.body
@@ -68,12 +68,12 @@ function slettDyr(dyrid) {
     let slettDyr = dbDyr.prepare("DELETE FROM dyr WHERE dyrid = ?");
     slettDyr.run(dyrid);
 }
-// Dyr kode slutt
+// Dyrepark
 
 
 
 
-// Folk kode start
+// Pålogging
 app.get("/Public/registrer", (req, res) => {
     res.sendFile(path.join(__dirname, "/Public/registrer.html"))
 })
@@ -83,13 +83,6 @@ app.get("/Public/login", (req, res) => {
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/index.html"))
-    /*
-    if(req.session.loggedin) {
-        res.sendFile(path.join(__dirname, "/index.hbs"))
-    } else {
-        res.sendFile(path.join(__dirname, "/Public/login.html"))
-    }  
-    */  
 })
 
 app.post("/login", async (req, res) => {
@@ -116,7 +109,7 @@ app.post(("/addUser"), async (req, res) => {
     
     res.redirect("back")    
 })
-// Folk kode slutt
+// Pålogging
 
 app.listen("3000", () => {
     console.log("Server listening at http://localhost:3000")
