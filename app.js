@@ -58,11 +58,6 @@ app.post("/Slettdyr", (req, res) => {
     slettDyr(dyrid);
     res.redirect("back");
 });
-app.post("/Updaterdyr", (req, res) => {
-    let dyrid = req.body.dyrid;
-    updaterDyr(dyrid);
-    res.redirect("back");
-});
 
 function settInnDyr(navn, fodselsdato, vekt, kjonn, artID) {
     let settInnDyr = dbDyr.prepare("INSERT INTO dyr (navn, fodselsdato, vekt, kjonn, artID) VALUES (?, ?, ?, ?, ?)")
@@ -72,11 +67,6 @@ function settInnDyr(navn, fodselsdato, vekt, kjonn, artID) {
 function slettDyr(dyrid) {
     let slettDyr = dbDyr.prepare("DELETE FROM dyr WHERE dyrid = ?");
     slettDyr.run(dyrid);
-}
-
-function updaterDyr(dyrid) {
-    let updaterDyr = dbDyr.prepare("")
-    updaterDyr.run(dyrid);
 }
 // Dyr kode slutt
 
