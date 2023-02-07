@@ -117,7 +117,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/index.html"))
 })
 
-// Dette blir kjørt i login.html
+// Dette blir kjørt i login.htm
 app.post("/login", async (req, res) => {
     let login = req.body;
     // Henter ut data fra database.db, user
