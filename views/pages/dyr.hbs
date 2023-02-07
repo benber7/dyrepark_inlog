@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../CSS/style.css" rel="stylesheet" type="text/css">
+    <title>Dyr</title>
+</head>
+<body>
+    <div class="navbar">
+        <button name="navbarB">
+            <a href="/">Home</a><br>
+        </button>
+        <button name="navbarB">
+            <a href="/Public/registrer">Registrer</a><br>
+        </button>
+        <button name="navbarB">
+            <a href="/Public/login">Log in</a><br>
+        </button>
+    </div>
+
+    <h1>Liste av dyr</h1>
+
+    <table>
+    <thead>
+        <tr>
+            <td>Navn</td>
+            <td>Vekt</td>
+            <td>Kjønn</td>
+            <td>Fødselsdato</td>
+            <td>Art ID</td>
+            <td>Dyr ID</td>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {{#each dyr}}
+            <tr>
+                <td>{{this.navn}}</td>
+                <td>{{this.vekt}}</td>
+                <td>{{this.kjonn}}</td>
+                <td>{{this.fodselsdato}}</td>
+                <td>{{this.artID}}</td>
+                <td>{{this.dyrid}}</td>
+                <td><form action="/Slettdyr" method="post">
+                        <input type="hidden" name="dyrid" value="{{this.dyrid}}">
+                        <input type="submit" value="Slett">
+                    </form>
+                </td>
+                <td><form action="/Updaterdyr" method="post">
+                        <input type="hidden" name="dyrid" value="{{this.dyrid}}">
+                        <input type="submit" value="Updater">
+                    </form>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table><br>
+
+    <button>
+        <a href="/visart">Se på artene</a>
+    </button><br>
+    <button>
+        <a href="/angi">Registrer ny dyr</a>
+    </button><br>
+</body>
+</html>
