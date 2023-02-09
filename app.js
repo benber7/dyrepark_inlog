@@ -65,8 +65,8 @@ app.get("/visart", (req, res) => {
 })
 
 //
-app.get("/endre", (req, res) => {
-    
+app.get("/Endredyr", (req, res) => {
+    res.render("endre.hbs")
 })
 
 // Dette skjører når du trykker på slett knappen på siden dyr.hbs
@@ -74,11 +74,6 @@ app.post("/Slettdyr", (req, res) => {
     let dyrid = req.body.dyrid;
     slettDyr(dyrid);
     res.redirect("back");
-});
-
-//
-app.post("/Endredyr", (req, res) => {
-    
 });
 
 // Dette funskjonen blir kjørt i /settinn som legger in data i dyr tabellen
@@ -91,11 +86,6 @@ function settInnDyr(navn, fodselsdato, vekt, kjonn, artID) {
 function slettDyr(dyrid) {
     let slettDyr = dbDyr.prepare("DELETE FROM dyr WHERE dyrid = ?");
     slettDyr.run(dyrid);
-}
-
-//
-function endreDyr(dyrid) {
-
 }
 // Dyrepark
 
@@ -131,6 +121,21 @@ app.post("/login", async (req, res) => {
     }
 })
 
+app.get("/logut", (req, res) => {
+    req.session.loggedin = false;
+    res.redirect("/");
+});
+
+app.get("/profil", (req, res) => {
+    res.render("profil.hbs")
+})
+
+app.post("/slettBruker", (req, res) => {
+    let id = req.body.id;
+    Slettbruker(id);
+    res.redirect("/");
+});
+
 // 
 app.post(("/addUser"), async (req, res) => {
     let svar = req.body;
@@ -143,6 +148,11 @@ app.post(("/addUser"), async (req, res) => {
     
     res.redirect("back")    
 })
+
+function Slettbruker(id) {
+    let Slettbruker = dbFolk.prepare("DELETE FROM user WHERE id = ?");
+    Slettbruker.run(id);
+}
 // Pålogging
 
 app.listen("3000", () => {
