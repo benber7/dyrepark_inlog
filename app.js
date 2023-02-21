@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const dbDyr = require("better-sqlite3")("gondwana.db", {verbose: console.log});
-const dbFolk = require("better-sqlite3")("database.db")
+const dbFolk = require("better-sqlite3")("brukere.db")
 const hbs = require("hbs");
 const path = require("path");
 
@@ -64,10 +64,11 @@ app.get("/visart", (req, res) => {
     res.render("art.hbs", objekt)
 })
 
-//
+/*
 app.get("/Endredyr", (req, res) => {
     res.render("endre.hbs")
 })
+*/
 
 // Dette skjører når du trykker på slett knappen på siden dyr.hbs
 app.post("/Slettdyr", (req, res) => {
@@ -110,7 +111,7 @@ app.get("/", (req, res) => {
 // Dette blir kjørt i login.htm
 app.post("/login", async (req, res) => {
     let login = req.body;
-    // Henter ut data fra database.db, user
+    // Henter ut data fra brukere.db, user
     let userData = dbFolk.prepare("SELECT * FROM user WHERE email = ?").get(login.email);
     
     if(await bcrypt.compare(login.password, userData.hash)) {
@@ -128,11 +129,17 @@ app.get("/logut", (req, res) => {
 
 app.get("/profil", (req, res) => {
     res.render("profil.hbs")
+    if(req.session.loggedin) {
+        res.sendFile(path.join(__dirname, "/Public/profil.hbs"))
+    } else {
+        res.sendFile(path.join(__dirname, "/Public/login.html"))
+    } 
 })
 
 app.post("/slettBruker", (req, res) => {
     let id = req.body.id;
     Slettbruker(id);
+    //req.session.loggedin = false;
     res.redirect("/");
 });
 
@@ -146,7 +153,7 @@ app.post(("/addUser"), async (req, res) => {
 
     dbFolk.prepare("INSERT INTO user (name, email, hash) VALUES (?, ?, ?)").run(svar.name, svar.email, hash)
     
-    res.redirect("back")    
+    res.redirect("/")    
 })
 
 function Slettbruker(id) {
