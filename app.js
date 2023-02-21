@@ -93,7 +93,7 @@ function slettDyr(dyrid) {
 
 /*
 function endreDyr(dyrid) {
-    let endreDyr = dbDyr.prepare("UPDATE dyr WHERE dyrid = ?");
+    let endreDyr = dbDyr.prepare("UPDATE dyr SET = ? WHERE dyrid = ?");
     endreDyr.run(dyrid);
 }
 */
