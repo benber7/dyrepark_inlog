@@ -66,7 +66,9 @@ app.get("/visart", (req, res) => {
 
 /*
 app.get("/Endredyr", (req, res) => {
+    let dyrid = req.body.dyrid;
     res.render("endre.hbs")
+    endreDyr(dyrid)
 })
 */
 
@@ -88,6 +90,17 @@ function slettDyr(dyrid) {
     let slettDyr = dbDyr.prepare("DELETE FROM dyr WHERE dyrid = ?");
     slettDyr.run(dyrid);
 }
+
+/*
+function endreDyr(dyrid) {
+    let endreDyr = dbDyr.prepare("UPDATE dyr WHERE dyrid = ?");
+    endreDyr.run(dyrid);
+}
+*/
+
+
+
+
 // Dyrepark
 
 
@@ -139,7 +152,7 @@ app.get("/profil", (req, res) => {
 app.post("/slettBruker", (req, res) => {
     let id = req.body.id;
     Slettbruker(id);
-    //req.session.loggedin = false;
+    req.session.loggedin = false;
     res.redirect("/");
 });
 

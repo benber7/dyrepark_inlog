@@ -1,4 +1,4 @@
-const db = require("better-sqlite3")("database.db")
+const db = require("better-sqlite3")("brukere.db")
 
 
 db.exec(`
