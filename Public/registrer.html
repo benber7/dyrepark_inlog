@@ -8,18 +8,28 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/Public/registrer">Registrer</a>
-        <a href="/Public/login">Log in</a>
+    <div class="header">
+        <h1>Gondwana dyrepark</h1>
     </div>
 
-    <form action="/addUser" method="post">
-        <label for="name">Username: </label><input type="text" name="name" id=""><br>
-        <label for="email">Email: </label><input type="text" name="email"><br>
-        <label for="password">Password: </label><input type="password" name="password" id=""><br>
-        <button>Register new user</button>
-    </form>
+    <div class="m-navbar">
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/Public/registrer">Registrer</a></li>
+            <li><a href="/Public/login">Log in</a></li>
+            <li><a href="/logut">Log ut</a></li>
+            <li><a href="/profil">Din bruker</a></li>
+        </ul>
+    </div>
+
+    <div class="registrerForm">
+        <form action="/addUser" method="post">
+            <label for="name">Brukernavn: </label><input type="text" name="name" id=""><br>
+            <label for="email">Epost: </label><input type="text" name="email"><br>
+            <label for="password">Passord: </label><input type="password" name="password" id=""><br>
+            <button>Registrer ny bruker</button>
+        </form>
+    </div>
 
 </body>
 </html>

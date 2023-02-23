@@ -8,16 +8,18 @@
     <title>Dyr</title>
 </head>
 <body>
-    <div class="navbar">
-        <button name="navbarB">
-            <a href="/">Home</a><br>
-        </button>
-        <button name="navbarB">
-            <a href="/Public/registrer">Registrer</a><br>
-        </button>
-        <button name="navbarB">
-            <a href="/Public/login">Log in</a><br>
-        </button>
+    <div class="header">
+        <h1>Gondwana dyrepark</h1>
+    </div>
+
+    <div class="m-navbar">
+        <ul>
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/Public/registrer">Registrer</a></li>
+            <li><a href="/Public/login">Log in</a></li>
+            <li><a href="/logut">Log ut</a></li>
+            <li><a href="/profil" style="float:right">Din bruker</a></li>
+          </ul>
     </div>
 
     <h1>Liste av dyr</h1>
@@ -48,10 +50,25 @@
                         <input type="submit" value="Slett">
                     </form>
                 </td>
-                <td><form action="/Endredyr">
+                <td>
+                    <form action="/Endredyr" method="post">
                         <input type="hidden" name="dyrid" value="{{this.dyrid}}">
-                        <input type="submit" value="Endre">
-                    </form>
+                        Navn
+                        <input type="text" name="navn" value="{{this.navn}}"><br>
+                        Vekt
+                        <input type="number" name="vekt" value="{{this.vekt}}"><br>
+                        Kjønn
+                        <input type="text" name="kjonn" value="{{this.kjonn}}"><br>
+                        Fødselsdato
+                        <input type="date" name="fodselsdato" value="{{this.fodselsdato}}"><br>
+                        Art
+                        <select name="artid">
+                            {{#each art}}
+                                <option value="{{this.artid}}">{{this.norskNavn}}</option>
+                            {{/each}}
+                        </select>
+                        <input type="submit" value="Updater">
+                    </form><br>
                 </td>
             </tr>
         {{/each}}

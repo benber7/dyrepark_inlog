@@ -1,0 +1,223 @@
+@media screen and (max-width: 800px) {
+    
+}
+
+@media screen and (max-width: 400px) {
+    
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(237, 255, 215);
+}
+
+.header {
+    padding: 30px;
+    text-align: center;
+    background: rgb(177, 177, 177);
+}
+  
+.header h1 {
+    font-size: 45px;
+    font-family: sans-serif;
+}
+
+.tekst {
+    text-align: left;
+    margin: 15px;
+    padding: 15px;
+}
+
+.tekst h1 {
+    font-family: sans-serif;
+    font-size: 40px;
+}
+
+.tekst h2 {
+    font-family: sans-serif;
+    font-size: 35px;
+}
+
+.tekst h3 {
+    font-family: sans-serif;
+    font-size: 25px;
+}
+
+.m-navbar {
+    background-color: #333;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+  
+.m-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+  
+.m-navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+.m-navbar li a:hover:not(.active) {
+    background-color: #111;
+}
+  
+.active {
+    background-color: #4CAF50;
+}
+
+.menu {
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px 20px;
+}
+  
+.menu li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    border-radius: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+  
+.menu li a:hover {
+    background-color: #b8fa4e;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.registrerForm {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    font-family: sans-serif;
+}
+  
+.registrerForm form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.registrerForm label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+  
+.registrerForm input[type="text"],
+.registrerForm input[type="password"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.registrerForm input[type="text"]:focus,
+.registrerForm input[type="password"]:focus {
+    border-bottom: 2px solid #4CAF50;
+}
+  
+.registrerForm button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+  
+.registrerForm button:hover {
+    background-color: #b8fa4e;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.loginForm {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    font-family: sans-serif;
+}
+
+.loginForm form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginForm label {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.loginForm input[type="text"],
+.loginForm input[type="password"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.loginForm input[type="text"]:focus,
+.loginForm input[type="password"]:focus {
+    border-bottom: 2px solid #4CAF50;
+}
+
+.loginForm button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.loginForm button:hover {
+    background-color: #b8fa4e;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+}

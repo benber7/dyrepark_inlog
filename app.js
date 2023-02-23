@@ -1,8 +1,8 @@
 const express = require("express");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
-const dbDyr = require("better-sqlite3")("gondwana.db", {verbose: console.log});
-const dbFolk = require("better-sqlite3")("brukere.db")
+const dbDyr = require("better-sqlite3")("gondwana.db"); //{verbose: console.log}
+const dbFolk = require("better-sqlite3")("brukere.db"); //{verbose: console.log}
 const hbs = require("hbs");
 const path = require("path");
 
@@ -30,6 +30,7 @@ app.post("/settinn", (req, res) => {
     res.redirect("back")
 })
 
+
 // Når du søker på http://localhost:3000/angi starter du denne koden
 app.get("/angi", (req, res) => {
     // Jeg lager en variabel som inneholder henting av data fra databasen gondwana.db og henter ut alt fra tabellen dyr
@@ -55,27 +56,27 @@ app.get("/visdyr", (req, res) => {
 app.get("/visart", (req, res) => {
     let id = req.query.id
     /*  
-        Lager en variabel som inneholder henting av data fra databasen gondwana.db og henter ut artene 
-        dersom du skriver in id-en i URL-en feks http://localhost:3000/visart?id=2 
+    Lager en variabel som inneholder henting av data fra databasen gondwana.db og henter ut artene 
+    dersom du skriver in id-en i URL-en feks http://localhost:3000/visart?id=2 
     */
-    let art = dbDyr.prepare("SELECT * FROM art WHERE artID = ?").get(id)
-    let objekt = {art: art}
-    console.log(objekt)
-    res.render("art.hbs", objekt)
+   let art = dbDyr.prepare("SELECT * FROM art WHERE artID = ?").get(id)
+   let objekt = {art: art}
+   console.log(objekt)
+   res.render("art.hbs", objekt)
 })
 
-/*
-app.get("/Endredyr", (req, res) => {
-    let dyrid = req.body.dyrid;
-    res.render("endre.hbs")
-    endreDyr(dyrid)
-})
-*/
 
 // Dette skjører når du trykker på slett knappen på siden dyr.hbs
 app.post("/Slettdyr", (req, res) => {
     let dyrid = req.body.dyrid;
     slettDyr(dyrid);
+    res.redirect("back");
+});
+
+//
+app.post("/Endredyr", (req, res) => {
+    let svar = req.body
+    endreDyr(svar.navn, svar.vekt, svar.kjonn, svar.fodselsdato, svar.artID, svar.dyrid)
     res.redirect("back");
 });
 
@@ -91,16 +92,11 @@ function slettDyr(dyrid) {
     slettDyr.run(dyrid);
 }
 
-/*
-function endreDyr(dyrid) {
-    let endreDyr = dbDyr.prepare("UPDATE dyr SET = ? WHERE dyrid = ?");
-    endreDyr.run(dyrid);
+// 
+function endreDyr(navn, vekt, kjonn, fodselsdato, artID, dyrid) {
+    let dyr = dbDyr.prepare("UPDATE dyr SET navn = ?, vekt = ?, kjonn = ?, fodselsdato = ?, artID = ? WHERE dyrid = ?");
+    dyr.run(navn, vekt, kjonn, fodselsdato, artID, dyrid)
 }
-*/
-
-
-
-
 // Dyrepark
 
 
@@ -141,12 +137,11 @@ app.get("/logut", (req, res) => {
 });
 
 app.get("/profil", (req, res) => {
-    res.render("profil.hbs")
     if(req.session.loggedin) {
-        res.sendFile(path.join(__dirname, "/Public/profil.hbs"))
+        res.sendFile(path.join(__dirname, "/Public/profil.html"))
     } else {
         res.sendFile(path.join(__dirname, "/Public/login.html"))
-    } 
+    }
 })
 
 app.post("/slettBruker", (req, res) => {
@@ -166,13 +161,14 @@ app.post(("/addUser"), async (req, res) => {
 
     dbFolk.prepare("INSERT INTO user (name, email, hash) VALUES (?, ?, ?)").run(svar.name, svar.email, hash)
     
-    res.redirect("/")    
+    res.redirect("back")    
 })
-
+/*
 function Slettbruker(id) {
     let Slettbruker = dbFolk.prepare("DELETE FROM user WHERE id = ?");
     Slettbruker.run(id);
 }
+*/
 // Pålogging
 
 app.listen("3000", () => {
