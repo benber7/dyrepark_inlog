@@ -62,11 +62,7 @@
                         Fødselsdato
                         <input type="date" name="fodselsdato" value="{{this.fodselsdato}}"><br>
                         Art
-                        <select name="artid">
-                            {{#each art}}
-                                <option value="{{this.artid}}">{{this.norskNavn}}</option>
-                            {{/each}}
-                        </select>
+                        <input type="number" name="artID" value="{{this.artID}}"><br>
                         <input type="submit" value="Updater">
                     </form><br>
                 </td>
@@ -75,11 +71,11 @@
     </tbody>
 </table><br>
 
-    <button>
-        <a href="/visart">Se på artene</a>
-    </button><br>
-    <button>
-        <a href="/angi">Registrer ny dyr</a>
-    </button><br>
+    <div class="menu">
+        <ul>
+            <li><a href="/visart">Se på artene</a></li>
+            <li><a href="/angi">Registrer ny dyr</a></li>
+        </ul>
+    </div>
 </body>
 </html>
