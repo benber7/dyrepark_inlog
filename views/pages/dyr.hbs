@@ -24,52 +24,54 @@
 
     <h1>Liste av dyr</h1>
 
-    <table>
-    <thead>
-        <tr>
-            <td>Navn</td>
-            <td>Vekt</td>
-            <td>Kjønn</td>
-            <td>Fødselsdato</td>
-            <td>Art ID</td>
-            <td>Dyr ID</td>
-            
-        </tr>
-    </thead>
-    <tbody>
-        {{#each dyr}}
+    <div class="Liste">
+        <table>
+        <thead>
             <tr>
-                <td>{{this.navn}}</td>
-                <td>{{this.vekt}}</td>
-                <td>{{this.kjonn}}</td>
-                <td>{{this.fodselsdato}}</td>
-                <td>{{this.artID}}</td>
-                <td>{{this.dyrid}}</td>
-                <td><form action="/Slettdyr" method="post">
-                        <input type="hidden" name="dyrid" value="{{this.dyrid}}">
-                        <input type="submit" value="Slett">
-                    </form>
-                </td>
-                <td>
-                    <form action="/Endredyr" method="post">
-                        <input type="hidden" name="dyrid" value="{{this.dyrid}}">
-                        Navn
-                        <input type="text" name="navn" value="{{this.navn}}"><br>
-                        Vekt
-                        <input type="number" name="vekt" value="{{this.vekt}}"><br>
-                        Kjønn
-                        <input type="text" name="kjonn" value="{{this.kjonn}}"><br>
-                        Fødselsdato
-                        <input type="date" name="fodselsdato" value="{{this.fodselsdato}}"><br>
-                        Art
-                        <input type="number" name="artID" value="{{this.artID}}"><br>
-                        <input type="submit" value="Updater">
-                    </form><br>
-                </td>
+                <td>Navn</td>
+                <td>Vekt</td>
+                <td>Kjønn</td>
+                <td>Fødselsdato</td>
+                <td>Art ID</td>
+                <td>Dyr ID</td>
+                
             </tr>
-        {{/each}}
-    </tbody>
-</table><br>
+        </thead>
+        <tbody>
+            {{#each dyr}}
+                <tr>
+                    <td>{{this.navn}}</td>
+                    <td>{{this.vekt}}</td>
+                    <td>{{this.kjonn}}</td>
+                    <td>{{this.fodselsdato}}</td>
+                    <td>{{this.artID}}</td>
+                    <td>{{this.dyrid}}</td>
+                    <td><form action="/Slettdyr" method="post">
+                            <input type="hidden" name="dyrid" value="{{this.dyrid}}">
+                            <input type="submit" value="Slett">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/Endredyr" method="post">
+                            <input type="hidden" name="dyrid" value="{{this.dyrid}}">
+                            Navn: 
+                            <input type="text" name="navn" value="{{this.navn}}">
+                            Vekt: 
+                            <input type="number" name="vekt" value="{{this.vekt}}">
+                            Kjønn: 
+                            <input type="text" name="kjonn" value="{{this.kjonn}}">
+                            Fødselsdato: 
+                            <input type="date" name="fodselsdato" value="{{this.fodselsdato}}">
+                            Art: 
+                            <input type="number" name="artID" value="{{this.artID}}">
+                            <input type="submit" value="Updater">
+                        </form><br>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table><br>
+</div>
 
     <div class="menu">
         <ul>
