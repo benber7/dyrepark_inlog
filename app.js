@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, "Public")));
 app.use(express.urlencoded({extended: true}))
 app.set("view engine", hbs);
 app.set("views", path.join(__dirname, "./views/pages"))
-hbs.registerPartials(path.join(__dirname, "./views/partials"))
 
 
 // Dette er hovedsiden, du søker bare på http://localhost:3000/ og får opp en html side
@@ -164,8 +163,6 @@ app.post(("/addUser"), async (req, res) => {
 
 /*
 function Slettbruker(id) {
-    let Slettbruker = dbFolk.prepare("DELETE FROM user WHERE id = ?");
-    Slettbruker.run(id);
 }
 */
 
