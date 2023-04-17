@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c12170fa-1833-488f-92a9-252c2db72d44/resourceGroups/azureDEMO/providers/Microsoft.Web/sites/azureDEOM",
+    "appService.deploySubpath": "."
+}
